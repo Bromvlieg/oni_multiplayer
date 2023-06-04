@@ -1,9 +1,9 @@
 *.user
 /.idea
+/.vs
 /packages
 /Assembly-CSharp-firstpass
 /Assembly-CSharp
 /*/bin/
 /*/obj/
 /*/lib/
-
