@@ -1,4 +1,4 @@
-﻿using MultiplayerMod.Core.Dependency;
+using MultiplayerMod.Core.Dependency;
 using MultiplayerMod.Core.Logging;
 using MultiplayerMod.Game.Events;
 using MultiplayerMod.Game.Screens;
@@ -49,7 +49,7 @@ public class GameEventBindings {
         // TODO: Cursor update may be ignored if MouseMoved isn't triggered after the rate period.
         // TODO: Will be changed later (probably with current / last sent positions check).
         InterfaceToolEvents.MouseMoved += position => throttle10Hz.Run<UpdateCursorPosition>(
-            () => client.Send(new UpdateCursorPosition(client.Player, position))
+            () => client.Send(new UpdateCursorPosition(client.Player, position, throttle10Hz.GetHertzTicks()))
         );
     }
 

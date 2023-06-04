@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 
 namespace MultiplayerMod.Multiplayer.Tools;
@@ -10,6 +10,11 @@ public class CommandRateThrottle {
 
     public CommandRateThrottle(int rate) {
         period = new TimeSpan(10000000 / rate);
+    }
+
+    public long GetHertzTicks()
+    {
+        return period.Ticks;
     }
 
     public void Run<T>(System.Action action) where T : IMultiplayerCommand {

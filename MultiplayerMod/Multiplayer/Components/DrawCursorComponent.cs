@@ -1,4 +1,4 @@
-﻿using MultiplayerMod.Core.Dependency;
+using MultiplayerMod.Core.Dependency;
 using MultiplayerMod.Multiplayer.State;
 using MultiplayerMod.Network;
 using UnityEngine;
@@ -22,7 +22,10 @@ public class DrawCursorComponent : MonoBehaviour {
             if (player.Equals(client.Player))
                 continue;
 
-            RenderCursor(state.CursorPosition);
+            var lerpTime = (float)(System.DateTime.Now.Ticks - state.CursorPositionNewTime.Ticks);
+            lerpTime /= (float)state.CursorPositionNewHzTicks;
+
+            RenderCursor(Vector2.Lerp(state.CursorPosition, state.CursorPositionNew, lerpTime));
         }
     }
 
